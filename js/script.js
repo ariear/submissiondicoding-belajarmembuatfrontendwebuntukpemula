@@ -228,3 +228,18 @@ const getBooks = () => {
 getBooks()
 getListBookCompleted()
 getListBookUnCompleted()
+
+
+document.getElementById('search').addEventListener('input', (event) => {
+    const filter = event.target.value.toLowerCase()
+    const listCard = document.querySelectorAll('.card-book')
+
+    listCard.forEach((item) => {
+        let text = item.querySelector('h3').textContent
+        if (text.toLowerCase().includes(filter.toLowerCase())) {
+            item.style.display = ''
+        }else {
+            item.style.display = 'none'
+        }
+    })
+})
