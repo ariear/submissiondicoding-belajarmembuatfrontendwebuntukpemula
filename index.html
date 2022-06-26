@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Bookshelf Apps</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Bookshelf Apps</h1>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/index.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="main-section">
+            <aside class="add-book">
+                <h2>Masukkan Buku Baru</h2>
+                <form id="input-book">
+                    <div class="input">
+                        <label for="title">Judul</label>
+                        <input type="text" id="title" placeholder="Masukkan judul buku">
+                    </div>
+                    <div class="input">
+                        <label for="author">Penulis</label>
+                        <input type="text" id="author" placeholder="Masukkan penulis buku">
+                    </div>
+                    <div class="input">
+                        <label for="year">Tahun</label>
+                        <input type="number" id="year" placeholder="masukkan tahun terbit buku">
+                    </div>
+                    <div class="checkbok">
+                        <label for="isComplete">Selesai dibaca</label>
+                        <input type="checkbox" id="isComplete">
+                    </div>
+                    <button>Masukkan buku ke rak Belum selesai dibaca</button>
+                </form>
+            </aside>
+            <aside class="about-book">
+                <div class="info-books">
+                    <div>
+                        <p>Total buku</p>
+                        <p class="total-books">0</p>
+                    </div>
+                    <div>
+                        <p>Belum selesai dibaca</p>
+                        <p class="unCompleted-books">0</p>
+                    </div>
+                    <div>
+                        <p>Selesai dibaca</p>
+                        <p class="completed-books">0</p>
+                    </div>
+                </div>
+                <div class="search-books">
+                    <h2>Cari Buku</h2>
+                    <div>
+                        <input type="text" placeholder="masukkan judul buku">
+                        <button>Cari</button>
+                    </div>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+<script src="/js/script.js"></script>
+</body>
+</html>

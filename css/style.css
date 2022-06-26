@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar */
+nav{
+    background-color: #39AEA9;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+    color: white;
+}
+nav h1 {
+    font-size: 30px;
+    font-weight: 600;    
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li{
+    margin-right: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+/* End Navbar */
+
+
+/* Add Book */
+.main-section{
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.add-book{
+    border: 2px solid;
+    border-color: #39AEA9;
+    border-radius: 10px;
+    width: max-content;
+    padding: 20px 20px;
+    color: #39AEA9;
+    margin-right: 30px;
+}
+
+.add-book h2 {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+}
+
+.input label{
+    margin-bottom: 5px;
+}
+
+.input input {
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 2px solid;
+    border-color: #39AEA9;
+}
+
+.checkbok{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.checkbok input {
+    margin-left: 10px;
+    border: 1px solid;
+    border-color: #39AEA9;
+}
+
+#input-book button{
+    padding: 15px 35px;
+    border-radius: 10px;
+    border: none;
+    background-color: #39AEA9;
+    color: white;
+}
+/* End Add Book */
+
+/* About Books */
+.about-book{
+    position: relative;
+    border: 2px solid;
+    border-color: #39AEA9;
+    border-radius: 10px;
+    padding: 20px;
+}
+/* End About Books */
+
+/* info books */
+.info-books{
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.info-books div{
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0 5px;
+    text-align: center;
+    color: white;
+}
+
+.info-books div:first-child{
+    background-color: #3AB0FF;
+}
+.info-books div:nth-child(2){
+    background-color: #F94C66;
+}
+.info-books div:last-child{
+    background-color: #39AEA9;
+}
+/* end info books */
+
+/* Search */
+.search-books{
+    text-align: center;
+}
+.search-books h2{
+    font-weight: 500;
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: #39AEA9;
+}
+
+.search-books input {
+    width: 60%;
+    padding: 10px 20px;
+    border: 2px solid;
+    border-color: #39AEA9;
+    border-radius: 7px;
+    margin-right: 10px;
+}
+
+.search-books button {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 50px;
+    background-color: #39AEA9;
+    color: white;
+}
+/* end Search */
