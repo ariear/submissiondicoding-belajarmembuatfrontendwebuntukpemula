@@ -167,7 +167,7 @@ nav ul li a {
 .list-books{
     padding: 40px 0;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: baseline;
 }
 /* end list books */
@@ -179,6 +179,7 @@ nav ul li a {
     border-radius: 10px;
     border-color: #39AEA9;
     color: #39AEA9;
+    margin-right: 40px;
 }
 .uncompletedread h2 {
     font-weight: 600;

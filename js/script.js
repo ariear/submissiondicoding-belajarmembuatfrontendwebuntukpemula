@@ -6,6 +6,15 @@ formInputBook.addEventListener('submit', (event) => {
     addBook()
 })
 
+document.getElementById('isComplete').addEventListener('click', (e) => {
+    let btn = document.getElementById('btn-addtochart')
+    if (e.target.checked) {
+        btn.innerText = 'Masukkan buku ke rak selesai dibaca'
+    }else {
+        btn.innerText = 'Masukkan buku ke rak Belum selesai dibaca'
+    }
+})
+
 let books = []
 
 const getInfoBooks = () => {
@@ -42,6 +51,7 @@ const addBook = () => {
 
     localStorage.setItem('books', JSON.stringify(books))
     getBooks()
+    document.dispatchEvent(new Event('RENDER_EVENT'))
 
     document.getElementById('title').value = ''
     document.getElementById('author').value = ''
@@ -49,8 +59,70 @@ const addBook = () => {
     document.getElementById('isComplete').value = ''
 }
 
-const contentBooks = (e) => {
-    const parent = document.querySelector('.uncompletedread')
+function removeBook(bookId) {
+    const bookTarget = findBookIndex(bookId);
+   
+    if (bookTarget === -1) return;
+   
+    books.splice(bookTarget, 1);
+    document.dispatchEvent(new Event('RENDER_EVENT'));
+    localStorage.setItem('books', JSON.stringify(books))
+    getBooks()
+  }
+
+  function findBookIndex(bookId) {
+    for (const index in books) {
+      if (books[index].id === bookId) {
+        return index;
+      }
+    }
+    return -1;
+  }
+
+  function undoBookFromCompleted(bookId) {
+    const bookTarget = findBook(bookId);
+   
+    if (bookTarget == null) return;
+   
+    bookTarget.isComplete = false;
+    document.dispatchEvent(new Event('RENDER_EVENT'));
+    localStorage.setItem('books', JSON.stringify(books))
+    getBooks()
+  }
+
+  function addBookToCompleted (bookId) {
+    const bookTarget = findBook(bookId);
+   
+    if (bookTarget == null) return;
+   
+    bookTarget.isComplete = true;
+    document.dispatchEvent(new Event('RENDER_EVENT'));
+    localStorage.setItem('books', JSON.stringify(books))
+    getBooks()
+  }
+
+  function findBook(bookId) {
+    for (const bookItem of books) {
+      if (bookItem.id === bookId) {
+        return bookItem;
+      }
+    }
+    return null;
+  }
+
+document.addEventListener('RENDER_EVENT', () => {
+    const parentUnCompleted = document.querySelector('.parent-card-books')
+    parentUnCompleted.innerHTML = ''
+ 
+    const parentCompleted = document.querySelector('.parent-card-books-completed')
+    parentCompleted.innerHTML = ''
+
+    getListBookUnCompleted()
+    getListBookCompleted()
+})
+
+const cardUnCompleted = (e) => {
+    const parent = document.querySelector('.parent-card-books')
 
     const cardBooksUnComplete = document.createElement('div')
     const title = document.createElement('h3')
@@ -75,6 +147,14 @@ const contentBooks = (e) => {
     completedButton.classList.add('btn-green')
     deleteButton.classList.add('btn-red')
 
+    completedButton.addEventListener('click', () => {
+        addBookToCompleted(e.id)
+    })
+
+    deleteButton.addEventListener('click', () => {
+        removeBook(e.id)
+    })
+
     wrapContent.classList.add('wrap-btn')
 
     wrapContent.append(completedButton)
@@ -85,9 +165,57 @@ const contentBooks = (e) => {
     parent.append(cardBooksUnComplete)
 }
 
-const getListBook = () => {
+const cardCompleted = (e) => {
+    const parent = document.querySelector('.parent-card-books-completed')
+
+    const cardBooksUnComplete = document.createElement('div')
+    const title = document.createElement('h3')
+    const author = document.createElement('p')
+    const year = document.createElement('p')
+    
+    title.innerText = e.title
+    author.innerText = `Penulis : ${e.author}`
+    year.innerText = `Tahun : ${e.year}`
+
+    cardBooksUnComplete.append(title)
+    cardBooksUnComplete.append(author)
+    cardBooksUnComplete.append(year)
+
+    const wrapContent = document.createElement('div')
+    const completedButton = document.createElement('button')
+    const deleteButton = document.createElement('button')
+    
+    completedButton.innerText = 'belum selesai dibaca'
+    deleteButton.innerText = 'hapus buku'
+    
+    completedButton.classList.add('btn-green')
+    deleteButton.classList.add('btn-red')
+
+    completedButton.addEventListener('click', () => {
+        undoBookFromCompleted(e.id)
+    })
+
+    deleteButton.addEventListener('click', () => {
+        removeBook(e.id)
+    })
+
+    wrapContent.classList.add('wrap-btn')
+
+    wrapContent.append(completedButton)
+    wrapContent.append(deleteButton)
+
+    cardBooksUnComplete.append(wrapContent)
+    cardBooksUnComplete.classList.add('card-book')
+    parent.append(cardBooksUnComplete)
+}
+
+const getListBookUnCompleted = () => {
     let unCompleteBookList = books.filter((book) => !book.isComplete)
-    return unCompleteBookList.map(e => contentBooks(e))
+    return unCompleteBookList.map(e => cardUnCompleted(e))
+}
+const getListBookCompleted = () => {
+    let unCompleteBookList = books.filter((book) => book.isComplete)
+    return unCompleteBookList.map(e => cardCompleted(e))
 }
 
 const getBooks = () => {
@@ -98,4 +226,5 @@ const getBooks = () => {
 }
 
 getBooks()
-getListBook()
+getListBookCompleted()
+getListBookUnCompleted()
