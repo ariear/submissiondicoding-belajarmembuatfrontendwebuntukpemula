@@ -162,3 +162,72 @@ nav ul li a {
     color: white;
 }
 /* end Search */
+
+/* list books */
+.list-books{
+    padding: 40px 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+}
+/* end list books */
+
+/* Uncompleted read list books */
+.uncompletedread{
+    padding: 20px;
+    border: 2px solid;
+    border-radius: 10px;
+    border-color: #39AEA9;
+    color: #39AEA9;
+}
+.uncompletedread h2 {
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.completedread{
+    padding: 20px;
+    border: 2px solid;
+    border-radius: 10px;
+    border-color: #39AEA9;
+    color: #39AEA9;
+}
+.completedread h2 {
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+}
+/* end Uncompleted read list books */
+
+/* Card book */
+.card-book{
+    border: 2px solid;
+    border-color: #39AEA9;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+}
+.card-book h3 {
+    font-weight: 500;
+}
+
+.wrap-btn{
+    padding-top: 15px;
+}
+
+.btn-green {
+    background-color: #39AEA9;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+.btn-red{
+    background-color: #F94C66;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+/* end Card book */

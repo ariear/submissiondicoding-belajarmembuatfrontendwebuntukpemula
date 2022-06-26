@@ -7,12 +7,6 @@ formInputBook.addEventListener('submit', (event) => {
 })
 
 let books = []
-const getBooks = () => {
-    if (localStorage.books) {
-        books = JSON.parse(localStorage.getItem('books'))
-    }
-    getInfoBooks()
-}
 
 const getInfoBooks = () => {
     const totalBooks = document.querySelector('.total-books')
@@ -26,8 +20,6 @@ const getInfoBooks = () => {
     const unCompleteBook = document.querySelector('.unCompleted-books')
     unCompleteBook.innerText = unCompleteRead.length
 }
-
-getBooks()
 
 const generateId = () => {
     return +new Date();
@@ -56,3 +48,54 @@ const addBook = () => {
     document.getElementById('year').value = ''
     document.getElementById('isComplete').value = ''
 }
+
+const contentBooks = (e) => {
+    const parent = document.querySelector('.uncompletedread')
+
+    const cardBooksUnComplete = document.createElement('div')
+    const title = document.createElement('h3')
+    const author = document.createElement('p')
+    const year = document.createElement('p')
+    
+    title.innerText = e.title
+    author.innerText = `Penulis : ${e.author}`
+    year.innerText = `Tahun : ${e.year}`
+
+    cardBooksUnComplete.append(title)
+    cardBooksUnComplete.append(author)
+    cardBooksUnComplete.append(year)
+
+    const wrapContent = document.createElement('div')
+    const completedButton = document.createElement('button')
+    const deleteButton = document.createElement('button')
+    
+    completedButton.innerText = 'selesai dibaca'
+    deleteButton.innerText = 'hapus buku'
+    
+    completedButton.classList.add('btn-green')
+    deleteButton.classList.add('btn-red')
+
+    wrapContent.classList.add('wrap-btn')
+
+    wrapContent.append(completedButton)
+    wrapContent.append(deleteButton)
+
+    cardBooksUnComplete.append(wrapContent)
+    cardBooksUnComplete.classList.add('card-book')
+    parent.append(cardBooksUnComplete)
+}
+
+const getListBook = () => {
+    let unCompleteBookList = books.filter((book) => !book.isComplete)
+    return unCompleteBookList.map(e => contentBooks(e))
+}
+
+const getBooks = () => {
+    if (localStorage.books) {
+        books = JSON.parse(localStorage.getItem('books'))
+    }
+    getInfoBooks()
+}
+
+getBooks()
+getListBook()
