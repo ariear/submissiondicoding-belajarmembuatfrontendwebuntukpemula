@@ -151,9 +151,7 @@ const cardUnCompleted = (e) => {
         addBookToCompleted(e.id)
     })
 
-    deleteButton.addEventListener('click', () => {
-        removeBook(e.id)
-    })
+    deleteButton.addEventListener('click', () => { dialogDelete(e) })
 
     wrapContent.classList.add('wrap-btn')
 
@@ -196,7 +194,7 @@ const cardCompleted = (e) => {
     })
 
     deleteButton.addEventListener('click', () => {
-        removeBook(e.id)
+        dialogDelete(e)
     })
 
     wrapContent.classList.add('wrap-btn')
@@ -207,6 +205,51 @@ const cardCompleted = (e) => {
     cardBooksUnComplete.append(wrapContent)
     cardBooksUnComplete.classList.add('card-book')
     parent.append(cardBooksUnComplete)
+}
+
+const dialogDelete = (e) => {
+    const backgroundDialog = document.createElement('div')
+    backgroundDialog.classList.add('background-dialog')
+    
+    const parentDialog = document.createElement('div')
+    const textDialong = document.createElement('p')
+
+    const wrapBtnDialog = document.createElement('div')
+    const cancelBtn = document.createElement('button')
+    const okBtn = document.createElement('button')
+    
+    textDialong.innerText = 'Apakah anda yakin ingin menghapus buku ini ?'
+
+    cancelBtn.innerText = 'Batal'
+    okBtn.innerText = 'Yakin'
+
+    wrapBtnDialog.append(cancelBtn)
+    wrapBtnDialog.append(okBtn)
+
+    parentDialog.append(textDialong)
+    parentDialog.append(wrapBtnDialog)
+
+    parentDialog.classList.add('parent-dialog')
+
+    document.querySelector('body').append(parentDialog)
+    document.querySelector('body').append(backgroundDialog)
+    
+    cancelBtn.addEventListener('click', () => {
+        parentDialog.style.display = 'none'
+        backgroundDialog.style.display = 'none'
+    })
+
+    okBtn.addEventListener('click', () => {
+        removeBook(e.id)
+        parentDialog.style.display = 'none'
+        backgroundDialog.style.display = 'none'
+    })
+
+    backgroundDialog.addEventListener('click', () => {
+        parentDialog.style.display = 'none'
+        backgroundDialog.style.display = 'none'
+    })
+
 }
 
 const getListBookUnCompleted = () => {
