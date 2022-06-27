@@ -33,16 +33,29 @@ nav ul li a {
     text-decoration: none;
     color: white;
 }
+
+@media screen and (max-width: 586px) {
+    nav{
+        padding: 10px;
+    }
+    nav h1 {
+        font-size: 25px;
+        font-weight: 500;
+    }
+}
 /* End Navbar */
 
-
-/* Add Book */
+/* main section */
 .main-section{
     padding: 20px 0;
     display: flex;
     justify-content: center;
     align-items: baseline;
+    flex-wrap: wrap;
 }
+/* end main section */
+
+/* Add Book */
 
 .add-book{
     border: 2px solid;
@@ -51,7 +64,6 @@ nav ul li a {
     width: max-content;
     padding: 20px 20px;
     color: #39AEA9;
-    margin-right: 30px;
 }
 
 .add-book h2 {
@@ -96,6 +108,26 @@ nav ul li a {
     background-color: #39AEA9;
     color: white;
 }
+
+@media screen and (max-width: 768px) {
+    .add-book {
+        margin-bottom: 20px;
+        width: 85vw;
+    }
+    .add-book button {
+        width: 100%;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .add-book{
+        margin-right: 10px;
+    }   
+}
+@media screen and (min-width: 1440px) {
+    .add-book{
+        margin-right: 30px;
+    }   
+}
 /* End Add Book */
 
 /* About Books */
@@ -106,11 +138,18 @@ nav ul li a {
     border-radius: 10px;
     padding: 20px;
 }
+
+@media screen and (max-width: 768px) {
+    .about-book{
+        width: 85vw;
+    }
+}
 /* End About Books */
 
 /* info books */
 .info-books{
     display: flex;
+    justify-content: center;
     align-items: center;
     margin-bottom: 30px;
 }
@@ -132,6 +171,16 @@ nav ul li a {
 .info-books div:last-child{
     background-color: #39AEA9;
 }
+
+@media screen and (max-width: 496px) {
+    .info-books{
+        flex-direction: column;
+    }
+    .info-books div{
+        width: 90%;
+        margin: 5px 0;
+    }
+}
 /* end info books */
 
 /* Search */
@@ -151,7 +200,6 @@ nav ul li a {
     border: 2px solid;
     border-color: #39AEA9;
     border-radius: 7px;
-    margin-right: 10px;
 }
 
 .search-books button {
@@ -161,4 +209,157 @@ nav ul li a {
     background-color: #39AEA9;
     color: white;
 }
+
+@media screen and (max-width: 496px) {
+    .search-books input{
+        width: 80%;
+    }
+}
 /* end Search */
+
+/* list books */
+.list-books{
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+/* end list books */
+
+/* Uncompleted read list books */
+.uncompletedread{
+    padding: 20px;
+    border: 2px solid;
+    border-radius: 10px;
+    border-color: #39AEA9;
+    color: #39AEA9;
+    margin-right: 40px;
+}
+.uncompletedread h2 {
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.completedread{
+    padding: 20px;
+    border: 2px solid;
+    border-radius: 10px;
+    border-color: #39AEA9;
+    color: #39AEA9;
+}
+.completedread h2 {
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .list-books {
+        flex-direction: column;
+        align-items: center;
+    }
+    .uncompletedread{
+        margin-bottom: 20px;
+        margin-right: 0;
+    }
+}
+/* end Uncompleted read list books */
+
+/* Card book */
+.card-book{
+    width: 350px;
+    border: 2px solid;
+    border-color: #39AEA9;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+}
+.card-book h3 {
+    font-weight: 500;
+}
+
+.wrap-btn{
+    padding-top: 15px;
+}
+
+.btn-green {
+    background-color: #39AEA9;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+.btn-red{
+    background-color: #F94C66;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+@media screen and (max-width: 496px) {
+    .card-book{
+        width: 75vw;
+    }
+}
+/* end Card book */
+
+
+/* Pop Up Delete */
+.parent-dialog{
+    z-index: 10;
+    background-color: white;
+    width: max-content;
+    border: 1px solid;
+    border-color: #39AEA9;
+    border-radius: 10px;
+    padding: 20px 30px;
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.parent-dialog p {
+    margin-bottom: 20px;
+}
+
+.parent-dialog div{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.parent-dialog button{
+    padding: 7px 25px;
+    border: none;
+    border-radius: 50px;
+    color: white;
+}
+
+.parent-dialog button:first-child{
+    background-color: #F94C66;
+    margin-right: 10px;
+}
+
+.parent-dialog button:last-child{
+    background-color: #39AEA9;
+}
+
+.background-dialog{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.384);
+}
+
+@media screen and (max-width: 586px) {
+    .parent-dialog {
+        width: 80vw;
+    }
+}
+/* end Pop Up Delete */

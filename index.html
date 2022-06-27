@@ -11,10 +11,6 @@
     <header>
         <nav>
             <h1>Bookshelf Apps</h1>
-            <ul>
-                <li><a href="/index.html">Home</a></li>
-                <li><a href="/index.html">About</a></li>
-            </ul>
         </nav>
     </header>
     <main>
@@ -38,7 +34,7 @@
                         <label for="isComplete">Selesai dibaca</label>
                         <input type="checkbox" id="isComplete">
                     </div>
-                    <button>Masukkan buku ke rak Belum selesai dibaca</button>
+                    <button id="btn-addtochart">Masukkan buku ke rak Belum selesai dibaca</button>
                 </form>
             </aside>
             <aside class="about-book">
@@ -59,9 +55,22 @@
                 <div class="search-books">
                     <h2>Cari Buku</h2>
                     <div>
-                        <input type="text" placeholder="masukkan judul buku">
-                        <button>Cari</button>
+                        <input type="text" id="search" placeholder="masukkan judul buku">
                     </div>
+                </div>
+            </aside>
+        </section>
+        <section class="list-books">
+            <aside class="uncompletedread">
+                <h2>Belum selesai dibaca</h2>
+                <div class="parent-card-books">
+
+                </div>
+            </aside>
+            <aside class="completedread">
+                <h2>Selesai dibaca</h2>
+                <div class="parent-card-books-completed">
+
                 </div>
             </aside>
         </section>
